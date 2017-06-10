@@ -15,7 +15,7 @@ public class WordCountSpark {
 		SparkConf conf = new SparkConf().setAppName("WordCount - Java");
 		JavaSparkContext spark = new JavaSparkContext(conf);
 		JavaRDD<String> textfile = spark.textFile("hdfs://hadoop.master.com:9000/user/psathishcs/Input/Books/The_Outline_of_Science.txt");
-		JavaRDD<String> words = textfile.flatMap(line -> Arrays.asList(line.split(" ")));
+		JavaRDD<String> words = textfile.flatMap(line -> Arrays.asList(line.split(" ")).iterator());
 		JavaPairRDD<String, Integer> counts =
 			    words.mapToPair(w -> new Tuple2<String, Integer>(w, 1));
 		counts.saveAsTextFile("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/The_Outline_of_Science.txt");
