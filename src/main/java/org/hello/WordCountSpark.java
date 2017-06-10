@@ -21,7 +21,7 @@ public class WordCountSpark {
 		fsConfig.set("fs.defaultFS", "hdfs://hadoop.master.com:9000");
 		FileSystem fs = FileSystem.get(fsConfig);
 		Path outputPath = new Path("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/Science_Java");
-		if (!fs.exists(outputPath)){
+		if (fs.exists(outputPath)){
 			fs.delete(outputPath, true);
 		}
 		JavaSparkContext spark = new JavaSparkContext(conf);
