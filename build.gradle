@@ -28,7 +28,7 @@ repositories {
 
 dependencies {
      compile 'com.google.guava:guava:21.0'
- 	compile group: 'org.apache.spark', name: 'spark-core_2.10', version: '2.1.0'
+ 	compile group: 'org.apache.spark', name: 'spark-core_2.10', version: '1.6.1'
     testCompile 'junit:junit:4.12'
 }
 

@@ -11,7 +11,7 @@ import org.apache.spark.api.java.JavaSparkContext;
  */
 public class HelloSpark {
 	public static void main(String[] args){
-		SparkConf conf = new SparkConf().setAppName("HelloSpark-Java").setMaster("192.168.108.138");
+		SparkConf conf = new SparkConf().setAppName("HelloSpark-Java");
 		JavaSparkContext spark = new JavaSparkContext(conf);
 		JavaRDD<String> textfile = spark.textFile("hdfs://hadoop.master.com:9000/user/psathishcs/Input/Books/The_Outline_of_Science.txt");
 		long count =  textfile.count();
