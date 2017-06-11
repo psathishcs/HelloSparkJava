@@ -27,10 +27,9 @@ public class HelloSparkSQL {
 		
 		Dataset<Row> relDF = spark.sql("SELECT relationships  FROM Companie WHERE name='Facebook'");
 		relDF.show();
-		relDF.createOrReplaceTempView("Relationships");
-
-		Dataset<Row> relationship = spark.sql("SELECT *  FROM Relationships");
-		relationship.show();
+		
+		relDF = spark.sql("SELECT relationships.person, relationships.title  FROM Companie WHERE name='Facebook'");
+		relDF.show();
 		
 	}
 }
