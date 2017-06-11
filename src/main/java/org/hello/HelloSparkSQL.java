@@ -1,11 +1,12 @@
 package org.hello;
 
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.AnalysisException;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 
 public class HelloSparkSQL {
-	public static void main(String[] args){
+	public static void main(String[] args) throws AnalysisException{
 		SparkSession spark = SparkSession.builder()
 										 .appName("HelloSparkSQL-Java")
 										 .config("spark.some.config.option", "some-value")
@@ -26,8 +27,10 @@ public class HelloSparkSQL {
 		
 		Dataset<Row> relDF = spark.sql("SELECT relationships  FROM Companie WHERE name='Facebook'");
 		relDF.show();
-		
-		
+		relDF.createOrReplaceTempView("Relationships");
+
+		Dataset<Row> relationship = spark.sql("SELECT *  FROM Relationships");
+		relationship.show();
 		
 	}
 }
