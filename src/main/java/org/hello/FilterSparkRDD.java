@@ -11,8 +11,8 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 public class FilterSparkRDD {
 
-	static Boolean filterNewsWord(String line){
-		return line.contains(" news ");
+	static Boolean filterScienceWord(String line){
+		return line.contains(" Science ");
 	}
 	
 	public static void main(String[] args) throws IOException{
@@ -27,18 +27,18 @@ public class FilterSparkRDD {
 		
 		fsConfig.set("fs.defaultFS", "hdfs://hadoop.master.com:9000");
 		FileSystem fs = FileSystem.get(fsConfig);
-		Path outputPath = new Path("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceNews_Java");
+		Path outputPath = new Path("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceSci_Java");
 		if (fs.exists(outputPath)){
 			fs.delete(outputPath, true);
 		}
-		JavaRDD<String> newsLines = textfile.filter(line -> line.contains("news"));
-		newsLines.saveAsTextFile("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceNews_Java");
+		JavaRDD<String> sciLines = textfile.filter(line -> line.contains("Science"));
+		sciLines.saveAsTextFile("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceSci_Java");
 		
-		outputPath = new Path("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceNewsWord_Java");
+		outputPath = new Path("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceSciWord_Java");
 		if (fs.exists(outputPath)){
 			fs.delete(outputPath, true);
 		}
-		JavaRDD<String> newsWordLines = textfile.filter(line -> filterNewsWord(line));
-		newsWordLines.saveAsTextFile("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceNewsWord_Java");
+		JavaRDD<String> sciWordLines = textfile.filter(line -> filterScienceWord(line));
+		sciWordLines.saveAsTextFile("hdfs://hadoop.master.com:9000/user/psathishcs/Output/Books/ScienceSciWord_Java");
 	}
 }
