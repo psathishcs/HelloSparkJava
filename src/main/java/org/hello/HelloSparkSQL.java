@@ -18,8 +18,11 @@ public class HelloSparkSQL {
 		Dataset<Row> sqlDF = spark.sql("SELECT * FROM Companie");
 		sqlDF.show();
 		
-		Dataset<Row> idDF = spark.sql("SELECT * FROM Companie WHERE name='Facebook'");
-		idDF.show();
+		Dataset<Row> nameDF = spark.sql("SELECT * FROM Companie WHERE name='Facebook'");
+		nameDF.show();
+		
+		Dataset<Row> relDF = spark.sql("SELECT _id, name, category_code, acquisitions, competitions, description, email_address, homepage_url, relationships  FROM Companie WHERE name='Facebook'");
+		relDF.show();
 		
 	}
 }
