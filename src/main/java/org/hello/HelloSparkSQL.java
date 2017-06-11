@@ -13,8 +13,7 @@ public class HelloSparkSQL {
 		JavaSparkContext spark = new JavaSparkContext(conf);
 		SQLContext sqlcont = new SQLContext(spark);
 		Dataset<Row> df = sqlcont.read().js  json("hdfs://hadoop.master.com:9000/user/psathishcs/Input/Json/Companies.json");
-		System.out.println("Companies Schema ------------------------------>")
+		System.out.println("Companies Schema ------------------------------>");
 		df.printSchema();
-		
 	}
 }
