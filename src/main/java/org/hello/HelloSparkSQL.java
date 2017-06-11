@@ -15,9 +15,11 @@ public class HelloSparkSQL {
 		df.printSchema();
 		System.out.println("Companies Schema ------------------------------>");
 		df.createOrReplaceTempView("Companie");
-		Dataset<Row> sqlDF = spark.sql("SELECT * FROM Companies");
+		Dataset<Row> sqlDF = spark.sql("SELECT * FROM Companie");
 		sqlDF.show();
-
+		
+		Dataset<Row> idDF = spark.sql("SELECT * FROM Companie WHERE name='facebook'");
+		idDF.show();
 		
 	}
 }
