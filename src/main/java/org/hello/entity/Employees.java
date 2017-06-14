@@ -8,16 +8,13 @@ import java.sql.Date;
  * @author SathishParthasarathy Jun 13, 2017 10:04:08 PM
  */
 public class Employees implements Serializable {
-	private enum Gender {
-	    M,
-	    F
-	}
+
 	private static final long serialVersionUID = 1L;
 	Long emp_no;
 	Date birth_date;
 	String first_name;
 	String last_name;
-	Gender gender;
+	char gender;
 	Date hire_date;
 
 	public Long getEmp_no() {
@@ -46,11 +43,11 @@ public class Employees implements Serializable {
 
 	
 
-	public Gender getGender() {
+	public char getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(char gender) {
 		this.gender = gender;
 	}
 
