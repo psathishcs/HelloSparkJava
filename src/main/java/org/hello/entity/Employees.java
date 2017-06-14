@@ -1,7 +1,7 @@
 package org.hello.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * 
@@ -11,11 +11,11 @@ public class Employees implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	Long emp_no;
-	String birth_date;
+	Date birth_date;
 	String first_name;
 	String last_name;
 	String gender;
-	String hire_date;
+	Date hire_date;
 
 	public Long getEmp_no() {
 		return emp_no;
