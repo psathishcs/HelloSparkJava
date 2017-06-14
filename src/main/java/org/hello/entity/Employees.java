@@ -14,7 +14,7 @@ public class Employees implements Serializable {
 	Date birth_date;
 	String first_name;
 	String last_name;
-	char gender;
+	Character gender;
 	Date hire_date;
 
 	public Long getEmp_no() {
@@ -43,11 +43,11 @@ public class Employees implements Serializable {
 
 	
 
-	public char getGender() {
+	public Character getGender() {
 		return gender;
 	}
 
-	public void setGender(char gender) {
+	public void setGender(Character gender) {
 		this.gender = gender;
 	}
 
