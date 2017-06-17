@@ -3,8 +3,6 @@ package org.hello;
 import java.util.Arrays;
 
 import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaPairRDD;
-import org.apache.spark.streaming.Duration;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
@@ -19,7 +17,7 @@ import scala.Tuple2;
  * Jun 17, 2017 9:57:01 AM
  */
 public class HelloSparkScream {
-	public static void main() throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 		SparkConf spark = new SparkConf().setAppName("Hello Spark Stream - Java Word Count");
 		JavaStreamingContext jssc = new JavaStreamingContext(spark, Durations.seconds(1));
 		JavaReceiverInputDStream<String> lines = jssc.socketTextStream("hadoop.master.com", 9999);
