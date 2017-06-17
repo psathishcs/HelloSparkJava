@@ -22,9 +22,10 @@ public class HelloSparkScream {
 		JavaStreamingContext jssc = new JavaStreamingContext(spark, Durations.seconds(1));
 		JavaReceiverInputDStream<String> lines = jssc.socketTextStream("hadoop.master.com", 9999);
 		JavaDStream<String> words = lines.flatMap(line -> Arrays.asList(line.split(" ")).iterator());
-		JavaPairDStream<String, Integer> counts = words
+		JavaPairDStream<String, Integer> wordCounts = words
 				.mapToPair(w -> new Tuple2<String, Integer>(w, 1))
 			    .reduceByKey((x, y) -> x + y);
+		wordCounts.print();
 		jssc.start();
 		jssc.awaitTermination();
 		
